@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "title": "NOVA — original logo study",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 5.5,
+  "transparent": false,
+  "profile": "clean",
+  "timing": {
+    "gather_start": 0.15,
+    "gather_end": 0.85,
+    "handoff": 0.9333333333333333,
+    "move_start": 1.08,
+    "move_end": 1.63
+  },
+  "layers": [
+    {
+      "name": "00-background",
+      "role": "background",
+      "svg": "assets/00-background.svg",
+      "png": "assets/00-background.png",
+      "start": 0,
+      "end": 5.5,
+      "pivot": [
+        960.0,
+        540.0
+      ]
+    },
+    {
+      "name": "10-part-0",
+      "role": "part",
+      "svg": "assets/10-part-0.svg",
+      "png": "assets/10-part-0.png",
+      "start": 0.15,
+      "end": 0.9333333333333333,
+      "pivot": [
+        691.1999999999999,
+        540.0
+      ],
+      "part_index": 0
+    },
+    {
+      "name": "10-part-1",
+      "role": "part",
+      "svg": "assets/10-part-1.svg",
+      "png": "assets/10-part-1.png",
+      "start": 0.15,
+      "end": 0.9333333333333333,
+      "pivot": [
+        691.1999999999999,
+        540.0
+      ],
+      "part_index": 1
+    },
+    {
+      "name": "10-part-2",
+      "role": "part",
+      "svg": "assets/10-part-2.svg",
+      "png": "assets/10-part-2.png",
+      "start": 0.15,
+      "end": 0.9333333333333333,
+      "pivot": [
+        691.1999999999999,
+        540.0
+      ],
+      "part_index": 2
+    },
+    {
+      "name": "20-symbol-master",
+      "role": "whole",
+      "svg": "assets/20-symbol-master.svg",
+      "png": "assets/20-symbol-master.png",
+      "start": 0.9333333333333333,
+      "end": 5.5,
+      "pivot": [
+        691.1999999999999,
+        540.0
+      ]
+    },
+    {
+      "name": "30-letter-0",
+      "role": "letter",
+      "svg": "assets/30-letter-0.svg",
+      "png": "assets/30-letter-0.png",
+      "start": 1.73,
+      "end": 5.5,
+      "pivot": [
+        866.0,
+        540.0
+      ]
+    },
+    {
+      "name": "30-letter-1",
+      "role": "letter",
+      "svg": "assets/30-letter-1.svg",
+      "png": "assets/30-letter-1.png",
+      "start": 1.825,
+      "end": 5.5,
+      "pivot": [
+        981.0,
+        540.0
+      ]
+    },
+    {
+      "name": "30-letter-2",
+      "role": "letter",
+      "svg": "assets/30-letter-2.svg",
+      "png": "assets/30-letter-2.png",
+      "start": 1.92,
+      "end": 5.5,
+      "pivot": [
+        1096.0,
+        540.0
+      ]
+    },
+    {
+      "name": "30-letter-3",
+      "role": "letter",
+      "svg": "assets/30-letter-3.svg",
+      "png": "assets/30-letter-3.png",
+      "start": 2.015,
+      "end": 5.5,
+      "pivot": [
+        1211.0,
+        540.0
+      ]
+    }
+  ],
+  "master_svg": "assets/final-master.svg",
+  "master_png": "assets/final-master.png",
+  "provenance": "Original geometric demonstration artwork; no customer assets or fonts"
+}

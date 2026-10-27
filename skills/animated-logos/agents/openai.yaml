@@ -1,0 +1,4 @@
+interface:
+  display_name: "animated logos"
+  short_description: "Create precise logo reveals with editable motion"
+  default_prompt: "Use $animated-logos to animate my logo with clean timing, an editable project, and a rendered preview."

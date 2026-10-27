@@ -1,0 +1,114 @@
+{
+  "version": "0.1.0",
+  "date": "2026-10-27",
+  "platform": "macOS, Apple Silicon",
+  "tested_versions": {
+    "unit_test_python": "3.14.8",
+    "image_qa_python": "3.12.14",
+    "blender": "5.2.3 LTS",
+    "ffmpeg": "8.1.2",
+    "node": "24.19.0",
+    "playwright": "1.62.1",
+    "Pillow": "12.3.0"
+  },
+  "unit_tests": {
+    "count": 10,
+    "result": "passed",
+    "coverage": [
+      "deterministic finite motion",
+      "bounded alpha and scale",
+      "exact settled transform",
+      "frame-aligned master handoff",
+      "symbol-letter sequencing",
+      "invalid plans and escaping paths",
+      "five global installer targets",
+      "three deduplicated workspace destinations",
+      "identical-copy no-op and backup updates",
+      "symlink preservation"
+    ]
+  },
+  "real_render_checks": {
+    "clean": {
+      "frames": 165,
+      "size": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "master_rms": 0.018477964855069542,
+      "alpha_rms": 0,
+      "encoded": "H.264 yuv420p, expected frame rate and duration"
+    },
+    "restrained": {
+      "frames": 165,
+      "size": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "master_rms": 0.018477964855069542,
+      "alpha_rms": 0,
+      "encoded": "H.264 yuv420p, expected frame rate and duration"
+    },
+    "elastic": {
+      "frames": 165,
+      "size": [
+        1920,
+        1080
+      ],
+      "fps": 30,
+      "master_rms": 0.018477964855069542,
+      "alpha_rms": 0,
+      "encoded": "H.264 yuv420p, expected frame rate and duration"
+    },
+    "alpha": {
+      "frames": 132,
+      "size": [
+        512,
+        512
+      ],
+      "fps": 24,
+      "master_rms": 0.0,
+      "alpha_rms": 0.0
+    }
+  },
+  "rendered_frames_total": 627,
+  "native_project_relocation": {
+    "result": "passed",
+    "relative_assets": true,
+    "image_layers": 9,
+    "frames": 165
+  },
+  "visual_review": "Clean full-duration dense contact sheets and a three-profile comparison across assembly, travel and wordmark stages inspected.",
+  "skill_validation": {
+    "result": "passed",
+    "method": "Official quick_validate checks executed with Ruby Psych YAML bridge because PyYAML was not installed; UI metadata and local reference links checked separately."
+  },
+  "after_effects": {
+    "jsx_generation": "passed",
+    "jsx_syntax": "passed with Node on a temporary .js copy",
+    "executed_in_after_effects": false,
+    "aep_generated": false,
+    "status": "experimental"
+  },
+  "agent_hosts": {
+    "package_format": "Portable SKILL.md with name and description; optional Codex UI metadata",
+    "discovery_paths_checked": "Official documentation, 2026-10-27",
+    "installer_filesystem_tests": [
+      "Codex",
+      "Claude Code",
+      "Antigravity App/IDE",
+      "Antigravity CLI",
+      "Gemini CLI"
+    ],
+    "local_skill_installation": "Codex",
+    "other_agent_end_to_end_sessions": false
+  },
+  "limits": [
+    "Three profiles implement one assembly-and-wordmark motion family.",
+    "PNG transform pipeline; vector path morphing and trim strokes require a separate vector workflow.",
+    "MP4 helper is silent and intentionally refuses transparent plans. RGBA PNG rendering is verified.",
+    "Application discovery layouts are verified; runtime agent/model behavior is not guaranteed by filesystem installation tests.",
+    "Windows/Linux and native After Effects execution have not been tested."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "animated-logos-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Optional local SVG rasterizer dependency for the animated-logos Agent Skill",
+  "license": "MIT",
+  "scripts": {
+    "check": "node --check skills/animated-logos/scripts/rasterize.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
