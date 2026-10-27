@@ -15,6 +15,8 @@ python3 tools/verify_render.py --project "$PROJECT" --video "$PROJECT/preview.mp
 
 The image check requires Pillow. It verifies a complete frame sequence, resolution and final-master raster error. The optional video check uses FFprobe to verify codec, pixel format, frame rate and duration. It does not judge visual taste, timing perception or audio intelligibility.
 
+For GIF previews, run `python3 tools/verify_gif.py PREVIEW.gif --width 640 --duration 4.5` with the actual requested width/duration. It decodes the frames, verifies looping, checks duration and confirms there are multiple distinct visual frames. Keep GIF decoding evidence separate from the high-quality PNG/master check.
+
 Inspect timestamped sheets through the moving interval at roughly 10 fps, plus the start/end of the hold. Look for collisions, clipped extents, seams, incorrect pivots, transient glyph distortions and unplanned pauses. Preserve a reviewed sheet and notes outside the installed skill.
 
 Move/copy the example to a fresh directory with `assets/` and `plan.json` beside its `.blend`, then open it using Blender and run `tools/verify_blend.py`. This establishes relative-path portability on the tested platform. It does not establish cross-platform support for every browser or Blender release.

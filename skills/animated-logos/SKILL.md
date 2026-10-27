@@ -16,8 +16,10 @@ Study a supplied reference before selecting a recipe: identify what assembles fi
 
 Select motion from the logo's geometry:
 
+For the six implemented families and independent symbol/wordmark combinations, read [motion-library.md](references/motion-library.md). For marketplace scale, source scope and which content can be redistributed with this public package, read [catalog-research.md](references/catalog-research.md).
+
 - **Assemble → position → wordmark:** a few meaningful symbol parts join, the complete symbol settles into its lockup, then letters arrive. Read [motion-design.md](references/motion-design.md) for timing and pivot choices.
-- **Quiet reveal:** use restrained translation, alpha or a matte when the identity calls for minimal motion. Keep intact glyphs and counters readable.
+- **Quiet reveal:** use restrained translation, alpha or the implemented `wipe` matte when the identity calls for minimal motion. Keep intact glyphs and counters readable.
 - **Stroke or path reveal:** use actual vector paths and masks/trim tools in the chosen renderer. The bundled PNG-layer renderer handles transforms and alpha; choose an appropriate vector workflow for changing paths.
 
 Shape the acceleration deliberately. Use a smooth travel curve for the lockup move and a short, damped follow-through for playful letters. Make the next focal point legible before introducing another. Arabic lettering follows its actual shaping and joining; use pre-shaped word groups or outlined text as needed, with a licensed font selected by the user.

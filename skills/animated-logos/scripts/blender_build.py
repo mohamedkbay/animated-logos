@@ -42,7 +42,9 @@ for channel,layer in enumerate(timeline['layers'],1):
         key(strip.transform,'offset_x',dx,frame);key(strip.transform,'offset_y',-dy,frame)
         key(strip.transform,'scale_x',sx,frame);key(strip.transform,'scale_y',sy,frame)
         key(strip.transform,'rotation',-math.radians(rotation),frame)
+    for frame,right in layer.get('crop_samples',[]):key(strip.crop,'max_x',right,frame)
 scene['Project']=plan['title'];scene['Motion profile']=plan['profile']
+scene['Symbol family']=plan.get('family','assembly');scene['Wordmark family']=plan.get('wordmark','default')
 scene['Sampling']='Integer frame timeline; positive image y maps to negative Blender offset_y'
 scene['Assets']='Original demo or user-provided project layers; relative paths'
 scene.frame_set(scene.frame_end)

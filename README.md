@@ -4,14 +4,24 @@ A portable Agent Skill and local motion toolkit for **Codex, Claude Code, Google
 
 **مهارة لتحريك الشعارات**: تجميع الرمز، ضبط السرعة والارتداد، وتحريك الحروف مع حفظ الشعار الأصلي. تعمل بالكود داخل Blender، وتضم مسار تصدير JSX تجريبي إلى After Effects.
 
-![Original NOVA motion study](examples/motion-study.jpg)
+![animated logos — orbital symbol and matte wordmark](examples/animated-logos.gif)
+
+The project identity above combines **orbit** for the symbol and **wipe** for the wordmark. It is a real rendered animation. [MP4 and editable source](examples/project-identity).
+
+| Assembly | Orbit | Pop |
+| --- | --- | --- |
+| ![Assembly](examples/gallery/assembly.gif) | ![Orbit](examples/gallery/orbit.gif) | ![Pop](examples/gallery/pop.gif) |
+| Fold | Glitch | Wipe |
+| ![Fold](examples/gallery/fold.gif) | ![Glitch](examples/gallery/glitch.gif) | ![Wipe](examples/gallery/wipe.gif) |
 
 Previews: [clean](examples/clean/preview.mp4) · [restrained](examples/restrained.mp4) · [elastic](examples/elastic.mp4). The [clean example](examples/clean) includes its SVG/PNG layers, timeline, experimental JSX, and editable Blender file.
 
 ## What is included
 
 - A discoverable skill named `$animated-logos`, with reference-led design guidance.
-- Three editable motion profiles: clean, restrained, elastic.
+- Six symbol families and six independently selectable wordmark treatments; combine them with `--family` and `--wordmark`.
+- Three parameter profiles: clean, restrained, elastic. The default assembly/drop behavior remains compatible with v0.1.0.
+- Looping, palette-optimized GIF export for documentation and sharing.
 - Deterministic motion samples shared by the Blender builder and an experimental AE JSX exporter.
 - Original NOVA demo artwork, rendered previews, endpoint checks and relative-path project validation.
 - No customer brand assets, voice recordings, paid API integrations or bundled third-party course material.
@@ -54,6 +64,20 @@ If needed, install the pinned helper dependencies in a project-local environment
 
 See [the production commands](skills/animated-logos/references/pipeline.md), [motion choices](skills/animated-logos/references/motion-design.md), and [After Effects mapping and primary sources](skills/animated-logos/references/after-effects.md).
 
+Mix two techniques and export a GIF after rendering/encoding:
+
+```sh
+python3 skills/animated-logos/scripts/animated_logos.py demo --project work/orbit-wipe --family orbit --wordmark wipe
+# Rasterize, render and encode using the production commands linked above.
+python3 skills/animated-logos/scripts/animated_logos.py gif --input work/orbit-wipe/preview.mp4 --output work/orbit-wipe/preview.gif
+```
+
+## Library research and original implementation
+
+The reviewed [VideoHive logo catalogue](https://videohive.net/category/after-effects-project-files/logo-stings) advertises over **19,600 After Effects logo stings**, the largest explicitly counted logo-specific collection verified in this review. This is not a claim of global rank. [Research notes and licensing sources](skills/animated-logos/references/catalog-research.md) compare Envato, Motion Array and Mister Horse.
+
+The included motions are independently written implementations of general techniques. No commercial template, preset expression, footage or soundtrack is bundled. The [motion library](skills/animated-logos/references/motion-library.md) explains each family, combinations and current renderer limits.
+
 ## Check the project
 
 ```sh
@@ -61,8 +85,8 @@ python3 -m unittest discover -s tests -v
 node --check skills/animated-logos/scripts/rasterize.cjs
 ```
 
-See [validation](skills/animated-logos/references/validation.md) for real render and relocation checks. The [v0.1.0 validation report](docs/validation-report.json) records actual tested versions and limits.
+See [validation](skills/animated-logos/references/validation.md) for real render and relocation checks. The [v0.2.0 validation report](docs/validation-report.json) records actual tested versions and limits; the [initial report](docs/v0.1.0-validation.json) is retained.
 
 ## License and contribution
 
-MIT licensed. The included NOVA artwork is original demonstration material, not a claim of brand ownership or availability. Bring logo assets you have permission to use. Improvements should include a reproducible example or a meaningful check; keep customer logos, voice recordings, credentials and local machine paths outside contributions. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Original code and demonstration artwork are MIT licensed. Embedded Cairo font data in the project identity example is separately licensed under SIL OFL 1.1; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). NOVA is demonstration material, not a claim of brand ownership or availability. Bring logo assets you have permission to use. Improvements should include a reproducible example or a meaningful check; keep customer logos, voice recordings, credentials and local machine paths outside contributions. See [CONTRIBUTING.md](CONTRIBUTING.md).

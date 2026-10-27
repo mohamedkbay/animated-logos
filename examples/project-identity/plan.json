@@ -1,0 +1,307 @@
+{
+  "schema": 1,
+  "title": "animated logos — project identity",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 5.5,
+  "transparent": false,
+  "profile": "clean",
+  "family": "orbit",
+  "wordmark": "wipe",
+  "timing": {
+    "gather_start": 0.15,
+    "gather_end": 0.85,
+    "handoff": 0.9666666666666667,
+    "move_start": 1.08,
+    "move_end": 1.63
+  },
+  "layers": [
+    {
+      "name": "00-background",
+      "role": "background",
+      "svg": "assets/00-background.svg",
+      "png": "assets/00-background.png",
+      "start": 0,
+      "end": 5.5,
+      "pivot": [
+        960,
+        540
+      ]
+    },
+    {
+      "name": "10-part-0",
+      "role": "part",
+      "svg": "assets/10-part-0.svg",
+      "png": "assets/10-part-0.png",
+      "start": 0.15,
+      "end": 0.9666666666666667,
+      "pivot": [
+        440,
+        540
+      ],
+      "part_index": 0,
+      "bounds_x": [
+        345,
+        535
+      ]
+    },
+    {
+      "name": "10-part-1",
+      "role": "part",
+      "svg": "assets/10-part-1.svg",
+      "png": "assets/10-part-1.png",
+      "start": 0.15,
+      "end": 0.9666666666666667,
+      "pivot": [
+        440,
+        540
+      ],
+      "part_index": 1,
+      "bounds_x": [
+        345,
+        535
+      ]
+    },
+    {
+      "name": "10-part-2",
+      "role": "part",
+      "svg": "assets/10-part-2.svg",
+      "png": "assets/10-part-2.png",
+      "start": 0.15,
+      "end": 0.9666666666666667,
+      "pivot": [
+        440,
+        540
+      ],
+      "part_index": 2,
+      "bounds_x": [
+        345,
+        535
+      ]
+    },
+    {
+      "name": "20-symbol-master",
+      "role": "whole",
+      "svg": "assets/20-symbol-master.svg",
+      "png": "assets/20-symbol-master.png",
+      "start": 0.9666666666666667,
+      "end": 5.5,
+      "pivot": [
+        440,
+        540
+      ]
+    },
+    {
+      "name": "30-letter-0",
+      "role": "letter",
+      "svg": "assets/30-letter-0.svg",
+      "png": "assets/30-letter-0.png",
+      "start": 1.73,
+      "end": 5.5,
+      "pivot": [
+        636.3799970149994,
+        545.8640022277832
+      ],
+      "bounds_x": [
+        601.9439997673035,
+        670.8159942626953
+      ]
+    },
+    {
+      "name": "30-letter-1",
+      "role": "letter",
+      "svg": "assets/30-letter-1.svg",
+      "png": "assets/30-letter-1.png",
+      "start": 1.785,
+      "end": 5.5,
+      "pivot": [
+        709.1399900913239,
+        545.1159973144531
+      ],
+      "bounds_x": [
+        676.6079907417297,
+        741.671989440918
+      ]
+    },
+    {
+      "name": "30-letter-2",
+      "role": "letter",
+      "svg": "assets/30-letter-2.svg",
+      "png": "assets/30-letter-2.png",
+      "start": 1.84,
+      "end": 5.5,
+      "pivot": [
+        762.9279825687408,
+        532.6720008850098
+      ],
+      "bounds_x": [
+        751.8159832954407,
+        774.039981842041
+      ]
+    },
+    {
+      "name": "30-letter-3",
+      "role": "letter",
+      "svg": "assets/30-letter-3.svg",
+      "png": "assets/30-letter-3.png",
+      "start": 1.895,
+      "end": 5.5,
+      "pivot": [
+        837.3199751377106,
+        545.1159973144531
+      ],
+      "bounds_x": [
+        784.9999737739563,
+        889.6399765014648
+      ]
+    },
+    {
+      "name": "30-letter-4",
+      "role": "letter",
+      "svg": "assets/30-letter-4.svg",
+      "png": "assets/30-letter-4.png",
+      "start": 1.95,
+      "end": 5.5,
+      "pivot": [
+        930.9559705257416,
+        545.8640022277832
+      ],
+      "bounds_x": [
+        896.5199732780457,
+        965.3919677734375
+      ]
+    },
+    {
+      "name": "30-letter-5",
+      "role": "letter",
+      "svg": "assets/30-letter-5.svg",
+      "png": "assets/30-letter-5.png",
+      "start": 2.005,
+      "end": 5.5,
+      "pivot": [
+        990.4559644460678,
+        537.6360054016113
+      ],
+      "bounds_x": [
+        966.4239642620087,
+        1014.487964630127
+      ]
+    },
+    {
+      "name": "30-letter-6",
+      "role": "letter",
+      "svg": "assets/30-letter-6.svg",
+      "png": "assets/30-letter-6.png",
+      "start": 2.06,
+      "end": 5.5,
+      "pivot": [
+        1050.2959537506104,
+        545.8640022277832
+      ],
+      "bounds_x": [
+        1017.4239540100098,
+        1083.167953491211
+      ]
+    },
+    {
+      "name": "30-letter-7",
+      "role": "letter",
+      "svg": "assets/30-letter-7.svg",
+      "png": "assets/30-letter-7.png",
+      "start": 2.115,
+      "end": 5.5,
+      "pivot": [
+        1121.4239444732666,
+        532.672004699707
+      ],
+      "bounds_x": [
+        1088.551944732666,
+        1154.2959442138672
+      ]
+    },
+    {
+      "name": "30-letter-8",
+      "role": "letter",
+      "svg": "assets/30-letter-8.svg",
+      "png": "assets/30-letter-8.png",
+      "start": 2.17,
+      "end": 5.5,
+      "pivot": [
+        1206.4919347763062,
+        531.923999786377
+      ],
+      "bounds_x": [
+        1195.4479351043701,
+        1217.5359344482422
+      ]
+    },
+    {
+      "name": "30-letter-9",
+      "role": "letter",
+      "svg": "assets/30-letter-9.svg",
+      "png": "assets/30-letter-9.png",
+      "start": 2.225,
+      "end": 5.5,
+      "pivot": [
+        1260.48393368721,
+        545.8640022277832
+      ],
+      "bounds_x": [
+        1226.5919365882874,
+        1294.3759307861328
+      ]
+    },
+    {
+      "name": "30-letter-10",
+      "role": "letter",
+      "svg": "assets/30-letter-10.svg",
+      "png": "assets/30-letter-10.png",
+      "start": 2.2800000000000002,
+      "end": 5.5,
+      "pivot": [
+        1334.8759260177612,
+        560.6879997253418
+      ],
+      "bounds_x": [
+        1300.0319271087646,
+        1369.7199249267578
+      ]
+    },
+    {
+      "name": "30-letter-11",
+      "role": "letter",
+      "svg": "assets/30-letter-11.svg",
+      "png": "assets/30-letter-11.png",
+      "start": 2.335,
+      "end": 5.5,
+      "pivot": [
+        1406.6839153766632,
+        545.8640022277832
+      ],
+      "bounds_x": [
+        1372.7919182777405,
+        1440.575912475586
+      ]
+    },
+    {
+      "name": "30-letter-12",
+      "role": "letter",
+      "svg": "assets/30-letter-12.svg",
+      "png": "assets/30-letter-12.png",
+      "start": 2.39,
+      "end": 5.5,
+      "pivot": [
+        1475.9079084396362,
+        545.8640022277832
+      ],
+      "bounds_x": [
+        1446.2319087982178,
+        1505.5839080810547
+      ]
+    }
+  ],
+  "master_svg": "assets/final-master.svg",
+  "master_png": "assets/final-master.png",
+  "provenance": "Original project identity and symbol; Cairo typography distributed under SIL OFL 1.1, see Cairo-OFL.txt"
+}

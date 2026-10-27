@@ -1,6 +1,6 @@
 {
   "name": "animated-logos-toolkit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Optional local SVG rasterizer dependency for the animated-logos Agent Skill",
   "license": "MIT",

@@ -7,7 +7,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
-from motionlib import PROFILES, load_project, sample, local_file
+from motionlib import PROFILES,FAMILIES,WORDMARKS,load_project,sample,local_file
 
 def write_json(path, value):
     path.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
@@ -39,23 +39,39 @@ def demo(args):
     if not args.transparent:
         add('00-background','background',f'<rect width="{w}" height="{h}" fill="white"/>',0,5.5,[w/2,h/2])
     for i,part in enumerate(parts):
-        add(f'10-part-{i}','part',part,timing['gather_start'],timing['handoff'],pivot,part_index=i)
+        add(f'10-part-{i}','part',part,timing['gather_start'],timing['handoff'],pivot,part_index=i,
+            bounds_x=[pivot[0]-95*unit,pivot[0]+95*unit])
     add('20-symbol-master','whole',''.join(parts),timing['handoff'],5.5,pivot)
     letter_bodies=[]
     for i,path in enumerate(letters):
         x=w*.425+i*115*unit; y=h/2-60*unit
         body=f'<g transform="translate({x} {y}) scale({unit})"><path fill="#111111" fill-rule="evenodd" d="{path}"/></g>'
         letter_bodies.append(body)
-        add(f'30-letter-{i}','letter',body,1.73+i*.095,5.5,[x+50*unit,y+60*unit])
+        add(f'30-letter-{i}','letter',body,1.73+i*.095,5.5,[x+50*unit,y+60*unit],bounds_x=[x,x+100*unit])
     backdrop='' if args.transparent else f'<rect width="{w}" height="{h}" fill="white"/>'
     (assets/'final-master.svg').write_text(svg(backdrop+''.join(parts+letter_bodies)),encoding='utf8')
     plan=dict(schema=1,title='NOVA — original logo study',width=w,height=h,fps=args.fps,duration=5.5,
-              transparent=args.transparent,profile=args.profile,timing=timing,layers=layers,
+              transparent=args.transparent,profile=args.profile,family=getattr(args,'family','assembly'),
+              wordmark=getattr(args,'wordmark',None),timing=timing,layers=layers,
               master_svg='assets/final-master.svg',master_png='assets/final-master.png',
               provenance='Original geometric demonstration artwork; no customer assets or fonts')
     write_json(root/'plan.json',plan)
     load_project(root)
     print(f'Created {args.profile} demo: {len(layers)} layers, {w}x{h}, {args.fps} fps')
+
+def catalog(args):print(json.dumps({'symbol_families':FAMILIES,'wordmark_families':WORDMARKS,'profiles':PROFILES},indent=2))
+
+def gif(args):
+    source=Path(args.input).resolve();output=Path(args.output).resolve()
+    if not source.is_file():raise ValueError('Input video not found')
+    if output.exists():raise ValueError('Output exists; choose a new version')
+    exe=shutil.which(args.ffmpeg)
+    if not exe:raise ValueError('ffmpeg not found; supply --ffmpeg')
+    if args.width<=0 or args.fps<=0 or args.duration<=0 or args.start<0:raise ValueError('Invalid GIF dimensions or timing')
+    output.parent.mkdir(parents=True,exist_ok=True)
+    graph=f'fps={args.fps},scale={args.width}:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128[p];[b][p]paletteuse=dither=sierra2_4a'
+    subprocess.run([exe,'-hide_banner','-n','-ss',str(args.start),'-i',str(source),'-t',str(args.duration),'-filter_complex',graph,'-loop','0',str(output)],check=True)
+    print(output)
 
 def sampled(args):
     root=Path(args.project).resolve(); plan=load_project(root)
@@ -132,6 +148,19 @@ try {
       var prop=tr.property(names[p]);prop.setValuesAtTimes(times,values[p]);
       for(var k=1;k<=prop.numKeys;k++) prop.setInterpolationTypeAtKey(k,KeyframeInterpolationType.LINEAR,KeyframeInterpolationType.LINEAR);
     }
+    if(s.crop_samples) {
+      var mask=layer.property("ADBE Mask Parade").addProperty("ADBE Mask Atom");
+      mask.maskMode=MaskMode.ADD;
+      var mt=[],mv=[];
+      for(var c=0;c<s.crop_samples.length;c++) {
+        var cr=s.crop_samples[c],shape=new Shape(),edge=spec.width-cr[1];
+        shape.vertices=[[0,0],[edge,0],[edge,spec.height],[0,spec.height]];
+        shape.inTangents=[[0,0],[0,0],[0,0],[0,0]];shape.outTangents=shape.inTangents;shape.closed=true;
+        mt.push((cr[0]-1)/spec.fps);mv.push(shape);
+      }
+      var mp=mask.property("ADBE Mask Shape");mp.setValuesAtTimes(mt,mv);
+      for(var mk=1;mk<=mp.numKeys;mk++) mp.setInterpolationTypeAtKey(mk,KeyframeInterpolationType.LINEAR,KeyframeInterpolationType.LINEAR);
+    }
   }
   comp.openInViewer();
 } finally { app.endUndoGroup(); }
@@ -143,14 +172,19 @@ try {
 def main():
     parser=argparse.ArgumentParser(description=__doc__);sub=parser.add_subparsers(dest='action',required=True)
     d=sub.add_parser('demo');d.add_argument('--project',required=True);d.add_argument('--profile',choices=PROFILES,default='clean')
+    d.add_argument('--family',choices=FAMILIES,default='assembly');d.add_argument('--wordmark',choices=WORDMARKS)
     d.add_argument('--width',type=int,default=1920);d.add_argument('--height',type=int,default=1080);d.add_argument('--fps',type=int,default=30)
     d.add_argument('--transparent',action='store_true');d.set_defaults(fn=demo)
+    sub.add_parser('catalog').set_defaults(fn=catalog)
+    g=sub.add_parser('gif');g.add_argument('--input',required=True);g.add_argument('--output',required=True)
+    g.add_argument('--width',type=int,default=640);g.add_argument('--fps',type=int,default=15)
+    g.add_argument('--start',type=float,default=0);g.add_argument('--duration',type=float,default=4.5);g.add_argument('--ffmpeg',default='ffmpeg');g.set_defaults(fn=gif)
     for name,fn in [('sample',sampled),('ae-script',ae_script)]:
         p=sub.add_parser(name);p.add_argument('--project',required=True);p.set_defaults(fn=fn)
     e=sub.add_parser('encode');e.add_argument('--project',required=True);e.add_argument('--output',required=True);e.add_argument('--ffmpeg',default='ffmpeg');e.set_defaults(fn=encode)
     c=sub.add_parser('contact-sheet');c.add_argument('--project',required=True);c.add_argument('--output',required=True);c.add_argument('--step',type=int,default=3);c.set_defaults(fn=contact)
     args=parser.parse_args()
-    if getattr(args,'width',1)<=0 or getattr(args,'height',1)<=0 or getattr(args,'fps',30)<=0 or getattr(args,'fps',30)%2 or getattr(args,'step',1)<=0:
+    if getattr(args,'width',1)<=0 or getattr(args,'height',1)<=0 or getattr(args,'fps',30)<=0 or (args.action=='demo' and args.fps%2) or getattr(args,'step',1)<=0:
         parser.error('Positive dimensions/step and an even fps are required by the 5.5-second demo')
     try:args.fn(args)
     except (ValueError,FileNotFoundError,KeyError) as error:parser.exit(2,f'Error: {error}\n')

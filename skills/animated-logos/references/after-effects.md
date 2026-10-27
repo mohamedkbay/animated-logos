@@ -13,7 +13,7 @@ Adobe's Graph Editor exposes value and speed changes; handle influence shapes ac
 
 For Arabic, retain joining and shaping. Splitting a string into independent Unicode characters is not a reliable way to reconstruct the supplied wordmark. Use outlined brand paths or already shaped groups when matching a master.
 
-`animated_logos.py ae-script --project PROJECT` emits `PROJECT/import-motion.jsx`. It imports PNG layers and applies the same per-frame position, anchor, scale, rotation and alpha samples as the Blender project. It creates a composition in the current AE project inside an undo group; it does not clear the project, save an `.aep`, publish or render. Run it in AE through File → Scripts → Run Script File when requested. The generated JSX is an experimental raster-layer interoperability route: it has passed generation/syntax checks but has not been executed in AE on the development machine. It does not create editable native shape paths or an `.aep` file by itself.
+`animated_logos.py ae-script --project PROJECT` emits `PROJECT/import-motion.jsx`. It imports PNG layers and applies the same per-frame position, anchor, scale, rotation and alpha samples as the Blender project. Wipe families additionally create sampled rectangular masks corresponding to Blender's crop keys. It creates a composition in the current AE project inside an undo group; it does not clear the project, save an `.aep`, publish or render. Run it in AE through File → Scripts → Run Script File when requested. The generated JSX is an experimental raster-layer interoperability route: it has passed generation/syntax checks but has not been executed in AE on the development machine. It does not create editable native shape paths or an `.aep` file by itself.
 
 ## Sources
 

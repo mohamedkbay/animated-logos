@@ -13,13 +13,13 @@ python3 "$SKILL/scripts/animated_logos.py" encode --project "$PROJECT" --output 
 python3 "$SKILL/scripts/animated_logos.py" contact-sheet --project "$PROJECT" --output "$PROJECT/review"
 ```
 
-The original NOVA demonstration requires no font, customer asset, voice service, browser download or network connection. Profiles `clean`, `restrained`, and `elastic` use the same master geometry and different measured motion parameters. Keep this distinction in examples rather than using it as a fixed brand preference.
+The original NOVA demonstration requires no font, customer asset, voice service, browser download or network connection. Profiles `clean`, `restrained`, and `elastic` use the same master geometry and different measured motion parameters. The six symbol families and wordmark choices are documented in [motion-library.md](motion-library.md); `--family orbit --wordmark wipe` mixes two techniques. Keep the distinction between a family and a parameter profile when describing results.
 
 ## Real-logo projects
 
-Create full-canvas SVG or PNG layers from the supplied vector master. Keep original paths, counters and fill rules. Use a `part` layer for each meaningful partition, one `whole` master, and one `letter` layer for each independently shaped glyph/group. The demo plan is an editable example of the schema. The included motion code implements the assembly recipe, not arbitrary morphing or a general-purpose timeline editor.
+Create full-canvas SVG or PNG layers from the supplied vector master. Keep original paths, counters and fill rules. Use a `part` layer for each meaningful partition, one `whole` master, and one `letter` layer for each independently shaped glyph/group. The demo plan is an editable example of the schema. The included motion code implements the documented transform and crop families, not arbitrary morphing or a general-purpose timeline editor.
 
-`pivot` is measured from the top-left of the full canvas. Samples contain frame, alpha, x offset, y offset, scale x/y, clockwise rotation in degrees. Positive y points down. Blender reverses y/rotation signs; AE uses these image coordinates directly. Use `frame_range` to round timing consistently. The final master handoff and all part ends share the same frame index.
+`pivot` is measured from the top-left of the full canvas. Samples contain frame, alpha, x offset, y offset, scale x/y, clockwise rotation in degrees. Positive y points down. Blender reverses y/rotation signs; AE uses these image coordinates directly. Optional `crop_samples` contain frame and right-edge crop in source pixels; Blender uses native crop keys and experimental AE export uses a rectangle mask. Use `frame_range` to round timing consistently. The final master handoff and all part ends share the same frame index.
 
 `rasterize.cjs` renders local SVGs with page JavaScript and network requests disabled. Embed licensed fonts/images in the SVG when needed. It refuses active or directly external SVG content; it is a local rendering helper, not a comprehensive SVG security validator. Treat third-party files as source material, inspect them and avoid executing bundled scripts.
 
