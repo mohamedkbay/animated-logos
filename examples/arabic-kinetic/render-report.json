@@ -1,0 +1,10 @@
+{
+  "width": 540,
+  "height": 960,
+  "fps": 30,
+  "frames": 540,
+  "duration": 18,
+  "audio": false,
+  "engine": "Canvas2D; absolute-time sampled",
+  "referenceMediaBundled": false
+}

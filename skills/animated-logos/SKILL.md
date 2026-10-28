@@ -1,6 +1,6 @@
 ---
 name: animated-logos
-description: Animate existing logos into precise reveals, idents, and product-video outros. Use for symbol assembly, staggered wordmarks, reference-led logo motion, Blender delivery, or After Effects motion planning and JSX export.
+description: Animate logos and Arabic kinetic typography into reveals, idents, and graphic motion studies. Use for symbol assembly, staggered wordmarks, connected Arabic extension, shape morphs, reference-led motion, Blender delivery, or After Effects motion planning and JSX export.
 license: MIT
 ---
 
@@ -17,6 +17,8 @@ Study a supplied reference before selecting a recipe: identify what assembles fi
 Select motion from the logo's geometry:
 
 For the six implemented families and independent symbol/wordmark combinations, read [motion-library.md](references/motion-library.md). For marketplace scale, source scope and which content can be redistributed with this public package, read [catalog-research.md](references/catalog-research.md).
+
+For Arabic word-led motion, connected-letter extension, continuous shape morphs, a camera passing through graphic layers or rolling counters, read [arabic-kinetic.md](references/arabic-kinetic.md). It supplies six implementation recipes and an optional deterministic Canvas renderer with original demonstration artwork. Its AE mappings are guidance, not a tested AE preset. Keep logo-only production on the existing pipeline when those devices are unnecessary.
 
 - **Assemble → position → wordmark:** a few meaningful symbol parts join, the complete symbol settles into its lockup, then letters arrive. Read [motion-design.md](references/motion-design.md) for timing and pivot choices.
 - **Quiet reveal:** use restrained translation, alpha or the implemented `wipe` matte when the identity calls for minimal motion. Keep intact glyphs and counters readable.

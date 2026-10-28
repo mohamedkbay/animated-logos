@@ -1,0 +1,10 @@
+{
+  "deterministicSeek": true,
+  "masterRestored": true,
+  "counterEndpoint": 1280,
+  "connector": 276,
+  "connectorFound": true,
+  "width": 540,
+  "height": 960,
+  "fps": 30
+}

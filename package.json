@@ -1,11 +1,11 @@
 {
   "name": "animated-logos-toolkit",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
-  "description": "Optional local SVG rasterizer dependency for the animated-logos Agent Skill",
+  "description": "Local rendering helpers for the animated-logos Agent Skill",
   "license": "MIT",
   "scripts": {
-    "check": "node --check skills/animated-logos/scripts/rasterize.cjs"
+    "check": "node --check skills/animated-logos/scripts/rasterize.cjs && node --check skills/animated-logos/scripts/kinetic_demo.cjs && node --check skills/animated-logos/assets/kinetic-type/engine.js"
   },
   "devDependencies": {
     "playwright": "1.62.1"

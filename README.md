@@ -16,6 +16,16 @@ The project identity above combines **orbit** for the symbol and **wipe** for th
 
 Previews: [clean](examples/clean/preview.mp4) · [restrained](examples/restrained.mp4) · [elastic](examples/elastic.mp4). The [clean example](examples/clean) includes its SVG/PNG layers, timeline, experimental JSX, and editable Blender file.
 
+## Arabic kinetic motion
+
+**حركة الكتابة العربية من المرجع إلى الكود:** تركيز، قصّ الكلمات، مدّ الوصلة مع حفظ الحروف، تحويل الأشكال، كاميرا بين الطبقات، وعدّاد متحرّك.
+
+![Original Arabic kinetic study — six motion devices](examples/arabic-kinetic/preview.gif)
+
+[Play the MP4](examples/arabic-kinetic/preview.mp4) · [Open the editable example](examples/arabic-kinetic/) · [How the six techniques work](skills/animated-logos/references/arabic-kinetic.md) · [Reference breakdown](docs/arabic-kinetic-study.md).
+
+This original 18-second study uses an optional **Canvas2D** renderer. Arabic is shaped first, then a suitable baseline connector is extended; morphs use matching contours; camera layers use perspective projection; the digit counter has an exact endpoint. It renders from explicit time with existing Node/Playwright/Chromium and FFmpeg. The supplied reference recording, its soundtrack and creator artwork are not bundled. The Blender logo renderer and its six motion families remain available independently.
+
 ## What is included
 
 - A discoverable skill named `$animated-logos`, with reference-led design guidance.
@@ -24,9 +34,10 @@ Previews: [clean](examples/clean/preview.mp4) · [restrained](examples/restraine
 - Looping, palette-optimized GIF export for documentation and sharing.
 - Deterministic motion samples shared by the Blender builder and an experimental AE JSX exporter.
 - Original NOVA demo artwork, rendered previews, endpoint checks and relative-path project validation.
+- Six Arabic kinetic-motion recipes, a runnable Canvas study and browser/geometry checks.
 - No customer brand assets, voice recordings, paid API integrations or bundled third-party course material.
 
-The skill stores reusable working knowledge and executable tools. It does not retrain an AI model. Blender is the verified production path; AE export remains experimental until executed and reviewed in After Effects.
+The skill stores reusable working knowledge and executable tools. It does not retrain an AI model. Blender is the verified logo pipeline; Canvas2D is checked for the Arabic kinetic study. AE export remains experimental until executed and reviewed in After Effects.
 
 ## Install for your agent
 
@@ -85,7 +96,7 @@ python3 -m unittest discover -s tests -v
 node --check skills/animated-logos/scripts/rasterize.cjs
 ```
 
-See [validation](skills/animated-logos/references/validation.md) for real render and relocation checks. The [v0.2.0 validation report](docs/validation-report.json) records actual tested versions and limits; the [initial report](docs/v0.1.0-validation.json) is retained.
+See [validation](skills/animated-logos/references/validation.md) for real render and relocation checks. The [v0.3.0 validation report](docs/validation-report.json) records this update; [v0.2.0](docs/v0.2.0-validation.json) and the [initial report](docs/v0.1.0-validation.json) retain earlier Blender evidence.
 
 ## License and contribution
 

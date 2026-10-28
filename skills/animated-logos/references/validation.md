@@ -24,3 +24,7 @@ Move/copy the example to a fresh directory with `assets/` and `plan.json` beside
 For the experimental JSX path, generate the script after rasterization and syntax-check a temporary `.js` copy with Node. Successful syntax/generation establishes only that; runtime AE verification requires actually running the script in AE and checking the composition against the same timeline/master. Keep that distinction in release notes.
 
 Store evidence as a compact JSON report with the tested versions, tests run, output properties and untested paths. Exclude local absolute paths, customer files and credential values from published reports.
+
+## Optional Arabic kinetic study
+
+Run `node tests/kinetic_geometry.cjs` from the repository, or let the Python suite run it with Node on PATH (`NODE_BINARY` can select an existing executable). It checks time boundaries, bounded counting, settled digit carries, exact morph endpoints, noncrossing intermediate contours and near-plane projection behavior. These do not replace the Cairo/browser render check: run `kinetic_demo.cjs check` with the actual local font and inspect the generated moving interval as described in [arabic-kinetic.md](arabic-kinetic.md). Its random-seek pixel comparison uses a stable readback canvas; its zero-extension comparison restores the pre-shaped Arabic master. Encoding is checked with FFprobe and the rendered GIF with `tools/verify_gif.py`. This path has no `.blend` or executed AE composition; keep its evidence distinct from the earlier Blender checks.
