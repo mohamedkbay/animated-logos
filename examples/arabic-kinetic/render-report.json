@@ -5,6 +5,7 @@
   "frames": 540,
   "duration": 18,
   "audio": false,
+  "verifiedMedia": true,
   "engine": "Canvas2D; absolute-time sampled",
   "referenceMediaBundled": false
 }

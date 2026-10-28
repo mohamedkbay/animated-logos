@@ -8,6 +8,10 @@ license: MIT
 
 Create a recognizable identity through motion, with the supplied logo restored exactly at the end. Use this skill in a coding agent with local file and terminal access, including Codex, Claude Code, Antigravity, or Gemini CLI. Resolve helper paths relative to this SKILL.md file, independently of the host agent. Preserve the user's existing renderer and approved project. The included renderer is a tested Blender sequencer workflow; the optional After Effects JSX exporter is a separate, explicitly experimental delivery path.
 
+## Execute a request
+
+Read [agent-workflow.md](references/agent-workflow.md) when starting execution: it routes the request to the supported pipeline, defines the required inputs and successful outputs, and provides a JSON dependency check. Use the chosen pipeline's actual commands and inspect their reports before claiming a render is complete. The repository is named `animated-logos-skill`; the installed skill and invocation remain `animated-logos`.
+
 ## Choose and shape the motion
 
 Read the current project brief and approved assets before changing them. Resolve the logo master, desired duration/aspect ratio, background or transparency, and destination. Infer routine choices from context. Use an existing narration master to time an outro when one is supplied.

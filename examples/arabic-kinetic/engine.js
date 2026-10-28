@@ -11,10 +11,25 @@
   const defaults = {
     duration: 18, sceneDuration: 3, fps: 30, target: 1280,
     paper: '#efeee6', ink: '#101212', accent: '#f34325',
-    hook: ['خلّي فكرتك', 'تتحرّك.'], cutWords: ['ابدأ', 'حرّك', 'وضّح'],
+    hook: ['LET IDEAS', 'MOVE.'], cutWords: ['IDEA', 'MOVE', 'MAKE'],
     stretchWord: 'نـمدّ', maxExtension: 96,
     brand: 'NOVA', footer: 'ANIMATED LOGOS · ORIGINAL MOTION STUDY'
   };
+  function resolvePlan(supplied={}) {
+    if(!supplied||typeof supplied!=='object'||Array.isArray(supplied))throw Error('Plan must be a JSON object');
+    const known=new Set([...Object.keys(defaults),'joinX']);
+    for(const key of Object.keys(supplied))if(!known.has(key))throw Error('Unknown plan field: '+key);
+    const plan={...defaults,...supplied};
+    if(plan.duration!==18||plan.sceneDuration!==3)throw Error('The built-in study is six 3-second scenes; customize the engine for another timeline');
+    for(const [field,length] of [['hook',2],['cutWords',3]])if(!Array.isArray(plan[field])||plan[field].length!==length||plan[field].some(v=>typeof v!=='string'||!v.trim()))throw Error(field+' must contain '+length+' nonempty strings');
+    for(const field of ['stretchWord','brand','footer'])if(typeof plan[field]!=='string'||!plan[field].trim())throw Error(field+' must be a nonempty string');
+    for(const field of ['paper','ink','accent'])if(!/^#[0-9a-f]{6}$/i.test(plan[field]))throw Error(field+' must use #RRGGBB');
+    if(!Number.isInteger(plan.target)||plan.target<1||plan.target>9999)throw Error('Counter target must be an integer from 1 to 9999');
+    if(!Number.isInteger(plan.fps)||plan.fps<1||plan.fps>60)throw Error('fps must be an integer from 1 to 60');
+    if(!Number.isFinite(plan.maxExtension)||plan.maxExtension<0||plan.maxExtension>160)throw Error('maxExtension must be from 0 to 160 logical pixels');
+    if(plan.joinX!==undefined&&(!Number.isFinite(plan.joinX)||plan.joinX<0))throw Error('joinX must be a nonnegative logical coordinate');
+    return plan;
+  }
   function stateAt(t, config = defaults) {
     const time = clamp(t, 0, config.duration);
     const scene = Math.min(5, Math.floor(time / config.sceneDuration));
@@ -74,21 +89,19 @@
     return distance<=near ? null : focal/distance;
   }
   function createRenderer(canvas, supplied = {}) {
-    const plan = {...defaults,...supplied};
-    if (!(plan.sceneDuration===3 && plan.duration===18)) throw new Error('This study has six three-second scenes');
-    if (!Number.isInteger(plan.target)||plan.target<1||plan.target>9999) throw new Error('Counter target must be an integer from 1 to 9999');
+    const plan = resolvePlan(supplied);
     const ctx=canvas.getContext('2d',{alpha:false,willReadFrequently:true}), scale=canvas.width/540;
     const font=(size,weight=700)=>`${weight} ${size}px MotionArabic`;
     function text(s,x,y,size=30,color=plan.ink,align='center') {
       ctx.font=font(size);ctx.textAlign=align;ctx.textBaseline='alphabetic';ctx.direction=/^[\x20-\x7e]+$/.test(s)?'ltr':'rtl';ctx.fillStyle=color;ctx.fillText(s,x,y);
     }
     function rounded(x,y,w,h,r,fill) {ctx.fillStyle=fill;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill();}
-    function headline(s,y=155,color=plan.ink){text(s,495,y,33,color,'right');}
+    function headline(s,y=155,color=plan.ink){ctx.font=font(28);const size=Math.min(28,28*448/Math.max(1,ctx.measureText(s).width));text(s,46,y,size,color,'left');}
     function background(dark=false){ctx.fillStyle=dark?plan.ink:plan.paper;ctx.fillRect(0,0,540,960);}
     function chrome(scene,dark) {
       const color=dark?plan.paper:plan.ink;
       for(let i=0;i<6;i++){ctx.fillStyle=i===scene?plan.accent:dark?'#555752':'#b9bdb5';ctx.fillRect(46+i*14,58,10,2);}
-      text(`${String(scene+1).padStart(2,'0')} / ${['التركيز','القص','المدّ','التحوّل','العمق','العدّاد'][scene]}`,495,66,16,color,'right');
+      text(`${String(scene+1).padStart(2,'0')} / ${['FOCUS','MATCH CUT','ARABIC JOIN','MORPH','DEPTH','COUNTER'][scene]}`,495,66,16,color,'right');
       ctx.save();ctx.font='10px monospace';ctx.direction='ltr';ctx.textAlign='left';ctx.fillStyle=dark?'#8a928a':'#747c74';ctx.fillText(plan.footer,46,916);ctx.restore();
     }
     // Shape the entire Arabic word first. Find a real thin baseline connector.
@@ -127,21 +140,21 @@
         ctx.save();ctx.translate(0,offset);text(plan.hook[0],270,yy,55);rounded(67,yy+28,406,105,3,plan.accent);text(plan.hook[1],270,yy+105,72);ctx.restore();
         const start=Math.min(5,Math.floor(local/.16));
         for(let i=0;i<6;i++){ctx.globalAlpha=i<=start?1:0;rounded(420-i*67,690,54,75,5,i===0?plan.accent:plan.paper);ctx.strokeStyle=plan.ink;ctx.strokeRect(420-i*67,690,54,75);text(String(i+1).padStart(2,'0'),447-i*67,721,14);}
-        ctx.globalAlpha=1;headline('الفكرة تقود الحركة.');
+        ctx.globalAlpha=1;headline('Let the idea lead the motion.');
       }else if(scene===1){
         const index=Math.min(plan.cutWords.length-1,Math.floor(local/.76));
         ctx.fillStyle=plan.ink;ctx.fillRect(0,218,540,435);
         ctx.save();ctx.beginPath();ctx.rect(40,300,460,260);ctx.clip();text(plan.cutWords[index],270,505,112,plan.paper);ctx.restore();
-        headline('قصّة جديدة… ونفس المركز.');
+        headline('New word. Same visual anchor.');
         ctx.fillStyle='#8e948d';ctx.fillRect(70,735,400,1);const px=70+400*clamp(local/3);ctx.fillStyle=plan.accent;ctx.fillRect(px,709,2,52);
         for(let i=0;i<3;i++)rounded(76+i*132,747,118,33,4,index===i?plan.accent:plan.ink);
       }else if(scene===2){
-        headline('مدّ الاتصال… واحفظ الحروف.');const extension=stretchAt(local,plan.maxExtension);drawStretch(extension);
+        headline('Extend the join. Preserve the glyphs.');const extension=stretchAt(local,plan.maxExtension);drawStretch(extension);
         if(extension>2){ctx.strokeStyle=plan.accent;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(270-extension/2,582);ctx.lineTo(270+extension/2,582);ctx.moveTo(270-extension/2,575);ctx.lineTo(270-extension/2,589);ctx.moveTo(270+extension/2,575);ctx.lineTo(270+extension/2,589);ctx.stroke();text(`+${Math.round(extension)} px`,270,617,17,plan.accent);}
-        text('سُمك ثابت · تشكيل متّصل',270,703,22,'#68756d');
+        text('Constant weight · Connected shaping',270,703,22,'#68756d');
       }else if(scene===3){
-        headline('شكل واحد… ومعنى يتغيّر.',155,plan.paper);const points=morphAt(local);ctx.fillStyle=plan.accent;ctx.beginPath();points.forEach((p,i)=>{if(i===0)ctx.moveTo(270+p[0]*104,493+p[1]*104);else ctx.lineTo(270+p[0]*104,493+p[1]*104);});ctx.closePath();ctx.fill();
-        const labels=['دائرة','جهاز','اتجاه','إعجاب'];text(labels[Math.min(3,Math.floor(clamp((local-.25)/.72,0,3)))],270,702,24,plan.paper);
+        headline('One contour. Four meanings.',155,plan.paper);const points=morphAt(local);ctx.fillStyle=plan.accent;ctx.beginPath();points.forEach((p,i)=>{if(i===0)ctx.moveTo(270+p[0]*104,493+p[1]*104);else ctx.lineTo(270+p[0]*104,493+p[1]*104);});ctx.closePath();ctx.fill();
+        const labels=['Circle','Device','Direction','Like'];text(labels[Math.min(3,Math.floor(clamp((local-.25)/.72,0,3)))],270,702,24,plan.paper);
       }else if(scene===4){
         // Actual perspective projection with a near-plane cutoff.
         const cameraZ=mix(1050,85,smooth((local-.15)/2.4));
@@ -150,16 +163,16 @@
           if(layer.z===0){ctx.fillStyle=plan.paper;ctx.beginPath();ctx.moveTo(0,-22);ctx.lineTo(22,0);ctx.lineTo(0,22);ctx.lineTo(-22,0);ctx.closePath();ctx.fill();text(plan.brand,0,60,23,plan.paper);}
           ctx.restore();
         }
-        const white=cameraZ<590;headline('الكاميرا تعبر الطبقات.',155,white?plan.paper:plan.ink);
+        const white=cameraZ<590;headline('Camera through depth planes.',155,white?plan.paper:plan.ink);
         ctx.strokeStyle=white?plan.paper:plan.ink;ctx.lineWidth=1;for(const[x,y,dx,dy]of[[44,260,1,1],[496,260,-1,1],[44,760,1,-1],[496,760,-1,-1]]){ctx.beginPath();ctx.moveTo(x+24*dx,y);ctx.lineTo(x,y);ctx.lineTo(x,y+24*dy);ctx.stroke();}
       }else{
-        headline('الأرقام تتحرّك مع الوقت.',155,plan.paper);const value=countAt(local,plan.target),digits=4;const step=83,total=digits*step;
+        headline('Time-driven digits.',155,plan.paper);const value=countAt(local,plan.target),digits=4;const step=83,total=digits*step;
         ctx.save();ctx.beginPath();ctx.rect(68,369,404,153);ctx.clip();
         for(let i=0;i<digits;i++){
           const weight=10**(digits-1-i),digit=digitAt(value,weight),number=digit.number,frac=digit.fraction;const x=270-total/2+step*(i+.5);
           text(String(number),x,492-frac*151,123,plan.paper);if(frac>0)text(String((number+1)%10),x,643-frac*151,123,plan.paper);
         }
-        ctx.restore();text('توقيت محسوب. ونهاية ثابتة.',270,592,25,plan.paper);
+        ctx.restore();text('One clock. An exact endpoint.',270,592,25,plan.paper);
         const progress=clamp(value/plan.target);for(let i=0;i<24;i++)rounded(63+i*17.5,678,13,27,2,i/24<progress?plan.accent:'#343b37');
         text(plan.brand,270,797,27,plan.paper);
       }
@@ -168,5 +181,5 @@
     }
     return {draw,plan,wordBox,drawStretch,wordCanvas:word};
   }
-  return {defaults,clamp,mix,ease,smooth,stateAt,stretchAt,countAt,digitAt,area,resample,align,morphAt,projection,shapes,createRenderer};
+  return {defaults,resolvePlan,clamp,mix,ease,smooth,stateAt,stretchAt,countAt,digitAt,area,resample,align,morphAt,projection,shapes,createRenderer};
 });

@@ -1,8 +1,8 @@
-# animated logos
+# animated logos skill
 
 A portable Agent Skill and local motion toolkit for **Codex, Claude Code, Google Antigravity, and Gemini CLI**. Assemble a symbol, move it into its lockup, stagger the original wordmark, and finish on the exact master artwork.
 
-**مهارة لتحريك الشعارات**: تجميع الرمز، ضبط السرعة والارتداد، وتحريك الحروف مع حفظ الشعار الأصلي. تعمل بالكود داخل Blender، وتضم مسار تصدير JSX تجريبي إلى After Effects.
+Animate existing logos through symbol assembly, controlled settling and wordmark reveals while preserving the original identity. Use the tested Blender pipeline, the optional Canvas motion study, or experimental JSX export for After Effects.
 
 ![animated logos — orbital symbol and matte wordmark](examples/animated-logos.gif)
 
@@ -18,7 +18,7 @@ Previews: [clean](examples/clean/preview.mp4) · [restrained](examples/restraine
 
 ## Arabic kinetic motion
 
-**حركة الكتابة العربية من المرجع إلى الكود:** تركيز، قصّ الكلمات، مدّ الوصلة مع حفظ الحروف، تحويل الأشكال، كاميرا بين الطبقات، وعدّاد متحرّك.
+**From reference to executable motion:** focus hooks, word match cuts, connected Arabic extension, shape morphs, camera depth and rolling counters.
 
 ![Original Arabic kinetic study — six motion devices](examples/arabic-kinetic/preview.gif)
 
@@ -39,11 +39,15 @@ This original 18-second study uses an optional **Canvas2D** renderer. Arabic is 
 
 The skill stores reusable working knowledge and executable tools. It does not retrain an AI model. Blender is the verified logo pipeline; Canvas2D is checked for the Arabic kinetic study. AE export remains experimental until executed and reviewed in After Effects.
 
+## Agent execution
+
+Start with the [agent execution guide](skills/animated-logos/references/agent-workflow.md): choose a supported pipeline, check existing tools through JSON preflight, supply the required assets, run the actual renderer, and verify its outputs. The repository is `animated-logos-skill`; the installed skill remains `$animated-logos`. All documentation and demonstration explanations are in English. The Arabic connector word is retained as a functional typography specimen.
+
 ## Install for your agent
 
 ```sh
-git clone https://github.com/mohamedkbay/animated-logos.git
-cd animated-logos
+git clone https://github.com/mohamedkbay/animated-logos-skill.git
+cd animated-logos-skill
 python3 tools/install.py --target codex
 ```
 
@@ -65,7 +69,7 @@ Example request:
 
 > Use $animated-logos to animate this logo in the style of my reference, with a clean 1080p preview and an editable Blender project.
 
-> استعمل animated logos، حرّك شعاري بتجميع الرمز وبعدها الحروف، وخلي النهاية مطابقة للشعار الأصلي.
+> Use animated-logos to create a kinetic motion study with English explanations, an Arabic connector example, and a reproducible rendered preview.
 
 ## Run a demo
 
@@ -96,7 +100,7 @@ python3 -m unittest discover -s tests -v
 node --check skills/animated-logos/scripts/rasterize.cjs
 ```
 
-See [validation](skills/animated-logos/references/validation.md) for real render and relocation checks. The [v0.3.0 validation report](docs/validation-report.json) records this update; [v0.2.0](docs/v0.2.0-validation.json) and the [initial report](docs/v0.1.0-validation.json) retain earlier Blender evidence.
+See [validation](skills/animated-logos/references/validation.md) for real render and relocation checks. The [v0.3.1 validation report](docs/validation-report.json) records this update; [v0.3.0](docs/v0.3.0-validation.json), [v0.2.0](docs/v0.2.0-validation.json) and the [initial report](docs/v0.1.0-validation.json) retain earlier Blender evidence.
 
 ## License and contribution
 

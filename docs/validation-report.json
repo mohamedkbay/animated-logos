@@ -1,7 +1,7 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "date": "2026-10-28",
-  "scope": "Original Arabic kinetic motion recipe and optional Canvas renderer; existing Blender motions unchanged",
+  "scope": "English documentation and example, renamed repository, explicit agent workflow and dependency preflight",
   "tested_versions": {
     "node": "24.19.0",
     "playwright": "1.62.1",
@@ -11,14 +11,17 @@
     "Pillow": "12.3.0"
   },
   "unit_tests": {
-    "count": 15,
+    "count": 18,
     "result": "passed",
     "new_coverage": [
       "absolute time and six scene boundaries",
       "bounded monotone counter and settled digit carries",
       "exact Arabic extension return",
       "noncrossing intermediate morph contours and exact endpoints",
-      "camera near-plane culling and perspective behavior"
+      "camera near-plane culling and perspective behavior",
+      "CLI help and rejection of unknown options",
+      "unsupported plans and missing fonts fail before project creation",
+      "missing-dependency preflight returns structured JSON and exit 2"
     ]
   },
   "browser_checks": {
@@ -32,7 +35,7 @@
     "fps": 30
   },
   "real_render": {
-    "engine": "Canvas2D",
+    "engine": "Canvas2D; absolute-time sampled",
     "size": [
       540,
       960
@@ -43,7 +46,12 @@
     "codec": "H.264 / yuv420p",
     "audio": false,
     "complete_decode": "passed",
-    "portable_example_engine_matches_skill": true
+    "portable_example_engine_matches_skill": true,
+    "width": 540,
+    "height": 960,
+    "duration": 18,
+    "verifiedMedia": true,
+    "referenceMediaBundled": false
   },
   "gif": {
     "frames": 216,
@@ -52,15 +60,15 @@
       480
     ],
     "duration_ms": 18000,
-    "distinct_sampled_frames": 180,
+    "distinct_sampled_frames": 179,
     "loop": 0,
-    "bytes": 438419
+    "bytes": 452457
   },
   "skill_validation": {
     "result": "passed",
     "method": "Official quick_validate.py, YAML parsed by existing Ruby Psych bridge; local Markdown targets checked"
   },
-  "visual_review": "Rendered six-device study inspected, including Arabic connector before/during/after extension, morph intermediates, camera planes and settled counter. Pale connector bleed and unfinished digit carries were corrected.",
+  "visual_review": "Six English-explained scenes inspected; fitting headings, Arabic connector specimen and stable counter hold checked.",
   "source_reference": {
     "reference_video_included": false,
     "source_audio_included": false,
@@ -75,5 +83,17 @@
     "Canvas morphs use compatible polygonal contours, not native AE path animation.",
     "After Effects mappings are guidance; AE was not executed and no .aep was generated.",
     "Study is silent; no source narration, soundtrack or customer video is distributed."
-  ]
+  ],
+  "repository": "mohamedkbay/animated-logos-skill",
+  "agent_command_flow": {
+    "freshInstalledSkill": true,
+    "differentWorkingDirectory": true,
+    "environmentReady": true,
+    "missingEncoderFailedCleanly": true
+  },
+  "language": {
+    "documentation": "English",
+    "example_explanations_and_controls": "English",
+    "Arabic_content": "Connector specimen only"
+  }
 }

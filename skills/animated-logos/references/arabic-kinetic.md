@@ -50,7 +50,7 @@ The demo target is configurable from 1 to 9999. AE may use source-text expressio
 
 ## Run the original demonstration
 
-Use existing Node, Playwright, Chromium and FFmpeg; the tool installs and downloads nothing. Choose a local licensed Arabic font and its full notice. `SKILL` points to the installed `animated-logos` folder, `PROJECT` to a fresh output directory.
+Use the [agent execution guide](agent-workflow.md) and JSON preflight first. This path uses existing Node, Playwright, Chromium, FFmpeg and FFprobe; the tool installs and downloads nothing. Choose a local licensed Arabic font and its full notice. `SKILL` points to the installed `animated-logos` folder, `PROJECT` to a fresh output directory.
 
 ```sh
 node "$SKILL/scripts/kinetic_demo.cjs" init --project "$PROJECT" \
@@ -63,7 +63,7 @@ python3 "$SKILL/scripts/animated_logos.py" gif --input "$PROJECT/preview.mp4" \
   --output "$PROJECT/preview.gif" --width 360 --fps 15 --duration 18
 ```
 
-For a shared dependency location, pass `--playwright-module /absolute/path/to/playwright`. Pass `--ffmpeg PATH` when FFmpeg is not on PATH. The browser defaults to Playwright's already-installed Chromium if `--browser` is omitted; that does not download a browser.
+For a shared dependency location, pass `--playwright-module /absolute/path/to/playwright`. Pass `--ffmpeg PATH` and `--ffprobe PATH` when those tools are not on PATH. The browser defaults to Playwright's already-installed Chromium if `--browser` is omitted; that does not download a browser.
 
 `plan.js` contains optional overrides such as `paper`, `ink`, `accent`, `hook`, `cutWords`, `stretchWord`, `joinX`, `maxExtension`, `target` and `brand`. A JSON file passed to `init --plan FILE` becomes those overrides. This study is intentionally six three-second scenes; longer narration or a different story requires editing the scene design, not stretching the movie. Open `index.html` for a local play/seek preview. `renderAt(t)` and the renderer depend on explicit time; the interactive playback clock is only a viewer.
 

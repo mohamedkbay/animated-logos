@@ -1,6 +1,6 @@
 {
-  "name": "animated-logos-toolkit",
-  "version": "0.3.0",
+  "name": "animated-logos-skill",
+  "version": "0.3.1",
   "private": true,
   "description": "Local rendering helpers for the animated-logos Agent Skill",
   "license": "MIT",

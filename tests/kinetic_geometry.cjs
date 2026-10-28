@@ -25,3 +25,5 @@ for(let frame=0;frame<=90;frame++){
 assert.deepEqual(m.morphAt(0),m.shapes[0]);assert.deepEqual(m.morphAt(3),m.shapes[3]);
 assert.throws(()=>m.resample([[0,0],[0,0]]),/nonzero perimeter/);
 console.log('Kinetic state, bounded counter, Arabic excursion, depth projection and noncrossing morph checks passed.');
+assert.equal(m.resolvePlan({target:42}).target,42);
+for(const plan of [{duration:30},{target:10000},{hook:['one']},{cutWords:['one','two']},{accent:'red'},{maxExtension:-1},{joinX:NaN},{unsupported:true}])assert.throws(()=>m.resolvePlan(plan));
