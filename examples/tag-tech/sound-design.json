@@ -1,0 +1,20 @@
+{
+  "source": "Original procedural synthesis",
+  "seed": 47023,
+  "sampleRate": 48000,
+  "duration": 10.0,
+  "channels": 2,
+  "peakBeforeEncoding": 0.785,
+  "cueFrames": [
+    4,
+    47,
+    59,
+    87,
+    99,
+    143,
+    176,
+    182,
+    201
+  ],
+  "referenceAudioUsed": false
+}

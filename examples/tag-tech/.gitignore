@@ -1,0 +1,6 @@
+cg-frames/
+review-*/
+stills/
+sound-design.wav
+render-report-*.json
+*.blend1

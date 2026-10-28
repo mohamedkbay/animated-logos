@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Tag Tech · Connected Assembly</title><style>body{margin:0;background:white}canvas{display:block;width:100%;height:auto}</style><canvas width="1920" height="1080" id="stage"></canvas><script>
+const canvas=document.getElementById('stage'),ctx=canvas.getContext('2d',{alpha:false,willReadFrequently:true});let plan,master,icon,wordImages,cg=new Image();
+function image(src){return new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=()=>reject(Error('Missing image: '+src));i.src=src;});}
+const clamp=u=>Math.max(0,Math.min(1,u));const ease=u=>{u=clamp(u);return u*u*u*(u*(u*6-15)+10)};const mix=(a,b,u)=>u===0?a:u===1?b:a+(b-a)*u;
+window.prepare=async(p,assets)=>{plan=p;master=await image(assets?.master||'assets/final-master.png');icon=await image(assets?.icon||'assets/icon.png');wordImages=await Promise.all(plan.words.map((w,i)=>image(assets?.words[i]||w.asset)));};
+window.renderAt=async(t,cgURI)=>{const T=plan.timing,W=canvas.width,S=W/1920;ctx.setTransform(S,0,0,S,0,0);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';ctx.fillStyle='#ffffff';ctx.fillRect(0,0,1920,1080);
+ if(t>=T.masterHandoff){ctx.drawImage(master,0,0);return {time:t,phase:'exact-master-hold'};}
+ const flat=ease((t-T.flatStart)/(T.flatEnd-T.flatStart));
+ if(t<T.flatEnd){
+  const progress=clamp(t/3.3),strength=Math.sin(Math.PI*progress)*.065;ctx.save();ctx.lineWidth=1.4;ctx.strokeStyle=`rgba(2,101,255,${strength})`;for(let i=0;i<2;i++){ctx.beginPath();ctx.arc(960,540,255+i*36,-2.8+t*.75+i*.9,-2.8+t*.75+i*.9+.72);ctx.stroke();}ctx.restore();
+  const f=Math.min(141,Math.floor(t*30)+1),url=cgURI||new URL('cg-frames/frame-'+String(f).padStart(4,'0')+'.png',location.href).href;if(cg.src!==url){cg.src=url;await cg.decode();}ctx.globalAlpha=1-flat;ctx.drawImage(cg,0,0,1920,1080);ctx.globalAlpha=1;
+ }
+ const u=ease((t-T.moveStart)/(T.moveEnd-T.moveStart)),b=plan.iconBox,w=b[2]-b[0],h=b[3]-b[1],cx=mix(960,(b[0]+b[2])/2,u),cy=540,hh=mix(380,h,u),ww=hh*w/h;
+ if(t>=T.flatStart){ctx.globalAlpha=t<T.flatEnd?flat:1;ctx.drawImage(icon,cx-ww/2,cy-hh/2,ww,hh);ctx.globalAlpha=1;}
+ for(let i=0;i<plan.words.length;i++){const start=i===0?T.tagStart:T.techStart,p=ease((t-start)/.7);if(p<=0)continue;const b=plan.words[i].box,w=b[2]-b[0],h=b[3]-b[1];ctx.save();ctx.beginPath();ctx.rect(b[0]-2,b[1]-28,(w+4)*p,h+56);ctx.clip();ctx.globalAlpha=p;ctx.drawImage(wordImages[i],b[0],b[1]+18*(1-p));ctx.restore();}
+ const shine=clamp((t-6.73)/.47);if(shine>0&&shine<1){ctx.save();ctx.beginPath();ctx.rect(b[0],b[1],w,h);ctx.clip();ctx.globalCompositeOperation='screen';const x=mix(b[0]-110,b[2]+110,shine);ctx.translate(x,540);ctx.rotate(-.25);const g=ctx.createLinearGradient(-50,0,50,0);g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(.5,`rgba(255,255,255,${Math.sin(shine*Math.PI)*.23})`);g.addColorStop(1,'rgba(255,255,255,0)');ctx.fillStyle=g;ctx.fillRect(-50,-180,100,360);ctx.restore();}
+ return {time:t,phase:t<T.flatEnd?'dimensional-assembly':'lockup-reveal',flat,u};};
+</script></html>

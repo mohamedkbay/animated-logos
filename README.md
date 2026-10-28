@@ -16,6 +16,14 @@ The project identity above combines **orbit** for the symbol and **wipe** for th
 
 Previews: [clean](examples/clean/preview.mp4) · [restrained](examples/restrained.mp4) · [elastic](examples/elastic.mp4). The [clean example](examples/clean) includes its SVG/PNG layers, timeline, experimental JSX, and editable Blender file.
 
+## Tag Tech — dimensional logo ident
+
+![Tag Tech — four-piece assembly and original wordmark](examples/tag-tech/preview.gif)
+
+[Play the ten-second 1080p MP4 with sound](examples/tag-tech/preview.mp4) · [Editable Blender scene, source and rebuild guide](examples/tag-tech/) · [Validation](examples/tag-tech/validation.json).
+
+Four polished blue pieces assemble in 3D, transition to the supplied flat icon, and reveal the original wordmark. Original procedural effects follow the motion cues; the final hold uses the unsplit master artwork. **Identity design: Yasin Alsharif.** This public brand example was requested by the repository owner; its artwork is [excluded from the MIT license](examples/tag-tech/LICENSE-ASSETS.md).
+
 ## Arabic kinetic motion
 
 **From reference to executable motion:** focus hooks, word match cuts, connected Arabic extension, shape morphs, camera depth and rolling counters.
@@ -35,7 +43,7 @@ This original 18-second study uses an optional **Canvas2D** renderer. Arabic is 
 - Deterministic motion samples shared by the Blender builder and an experimental AE JSX exporter.
 - Original NOVA demo artwork, rendered previews, endpoint checks and relative-path project validation.
 - Six Arabic kinetic-motion recipes, a runnable Canvas study and browser/geometry checks.
-- No customer brand assets, voice recordings, paid API integrations or bundled third-party course material.
+- An attributed Tag Tech brand example with a separate asset-rights notice; no voice recordings, paid API integrations or bundled third-party course material.
 
 The skill stores reusable working knowledge and executable tools. It does not retrain an AI model. Blender is the verified logo pipeline; Canvas2D is checked for the Arabic kinetic study. AE export remains experimental until executed and reviewed in After Effects.
 
@@ -104,4 +112,4 @@ See [validation](skills/animated-logos/references/validation.md) for real render
 
 ## License and contribution
 
-Original code and demonstration artwork are MIT licensed. Embedded Cairo font data in the project identity example is separately licensed under SIL OFL 1.1; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). NOVA is demonstration material, not a claim of brand ownership or availability. Bring logo assets you have permission to use. Improvements should include a reproducible example or a meaningful check; keep customer logos, voice recordings, credentials and local machine paths outside contributions. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Original code and original demonstration artwork are MIT licensed. Tag Tech brand artwork is excluded under its [asset-rights notice](examples/tag-tech/LICENSE-ASSETS.md). Embedded Cairo font data in the project identity example is separately licensed under SIL OFL 1.1; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). NOVA is demonstration material, not a claim of brand ownership or availability. Bring logo assets you have permission to use. Improvements should include a reproducible example or a meaningful check; keep private customer material, voice recordings, credentials and local machine paths outside contributions. See [CONTRIBUTING.md](CONTRIBUTING.md).

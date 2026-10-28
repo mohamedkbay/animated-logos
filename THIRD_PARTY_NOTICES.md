@@ -2,6 +2,10 @@
 
 The original toolkit code and original logo illustrations use the root MIT license.
 
+## Tag Tech identity
+
+The attributed [Tag Tech example](examples/tag-tech/) uses brand artwork supplied by the repository owner, who requested its public inclusion. The identity reference credits **Yasin Alsharif**. The name, logo and branded renders are excluded from MIT; all underlying brand rights remain with their respective owners. See [LICENSE-ASSETS.md](examples/tag-tech/LICENSE-ASSETS.md). Example scripts and original procedural sound synthesis are MIT licensed. No source presentation sheets, source-video soundtrack, commercial SFX or templates are bundled.
+
 ## Cairo typography
 
 The `examples/project-identity` example uses Cairo 700. Its SVG files embed the font as WOFF2 data so the source is portable. `Cairo-700.woff2` is also included for reproducibility. Font software remains under the **SIL Open Font License 1.1**, not the toolkit's MIT license. The full notice and font copyright are in [Cairo-OFL.txt](examples/project-identity/Cairo-OFL.txt). Upstream family: [Google Fonts / Cairo](https://github.com/google/fonts/tree/main/ofl/cairo).

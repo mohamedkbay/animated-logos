@@ -1,0 +1,119 @@
+{
+  "title": "Tag Tech \u2014 Connected Assembly",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 10,
+  "iconBox": [
+    531,
+    433,
+    747,
+    647
+  ],
+  "words": [
+    {
+      "name": "tag",
+      "asset": "assets/tag.png",
+      "box": [
+        784,
+        471,
+        1043,
+        609
+      ]
+    },
+    {
+      "name": "tech",
+      "asset": "assets/tech.png",
+      "box": [
+        1043,
+        471,
+        1390,
+        609
+      ]
+    }
+  ],
+  "brandColor": [
+    2,
+    101,
+    255
+  ],
+  "sourceCrop": [
+    484,
+    931,
+    1210,
+    1116
+  ],
+  "originalDesigner": "Yasin Alsharif",
+  "motionAuthor": "animated-logos-skill",
+  "timing": {
+    "assemblyStart": 0.12,
+    "assemblyEnd": 3.3,
+    "frontView": 4.1,
+    "flatStart": 4.2,
+    "flatEnd": 4.65,
+    "moveStart": 4.75,
+    "moveEnd": 5.75,
+    "tagStart": 5.85,
+    "techStart": 6.08,
+    "masterHandoff": 7.2,
+    "holdEnd": 10
+  },
+  "soundCues": [
+    {
+      "time": 0.13333333333333333,
+      "kind": "air",
+      "gain": 0.18,
+      "frame": 4
+    },
+    {
+      "time": 1.5666666666666667,
+      "kind": "glass",
+      "note": 880,
+      "gain": 0.23,
+      "frame": 47
+    },
+    {
+      "time": 1.9666666666666666,
+      "kind": "glass",
+      "note": 1174.66,
+      "gain": 0.18,
+      "frame": 59
+    },
+    {
+      "time": 2.9,
+      "kind": "contact",
+      "gain": 0.24,
+      "frame": 87
+    },
+    {
+      "time": 3.3,
+      "kind": "lock",
+      "gain": 0.3,
+      "frame": 99
+    },
+    {
+      "time": 4.766666666666667,
+      "kind": "air",
+      "gain": 0.16,
+      "frame": 143
+    },
+    {
+      "time": 5.866666666666666,
+      "kind": "tick",
+      "gain": 0.11,
+      "frame": 176
+    },
+    {
+      "time": 6.066666666666666,
+      "kind": "tick",
+      "gain": 0.09,
+      "frame": 182
+    },
+    {
+      "time": 6.7,
+      "kind": "resolve",
+      "gain": 0.2,
+      "frame": 201
+    }
+  ]
+}

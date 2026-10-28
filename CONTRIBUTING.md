@@ -6,4 +6,4 @@ Preserve the portable `SKILL.md` format. Keep application-specific metadata opti
 
 For a new motion recipe, show the moving interval and the settled master. An identity should finish on its original geometry. Document any intentional brand distortion, renderer limitations, added dependencies and licenses. Keep private project files, customer recordings and credentials out of commits.
 
-This project uses the MIT license. Submit only code, documentation and assets you can distribute under it.
+This project uses the MIT license for original code, documentation and original demonstration assets. Third-party brand examples require an explicit publication request, designer attribution and a separate asset-rights notice; do not imply that the MIT license grants brand reuse rights. The attributed Tag Tech example records this exception. Keep ordinary contributions under MIT and do not add private customer assets.
